@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: braulio1-test-flask-deployment
+  labels:
+    username: braulio1
+    env: test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: braulio1-test-flask
+  template:
+    metadata:
+      labels:
+        app: braulio1-test-flask
+        username: braulio1
+        env: test
+    spec:
+      containers:
+        - name: flask
+          imagePullPolicy: Always
+          image: brauliolpx/gene_api:hw8
+          env: 
+            - name: REDIS_IP
+              value: redis-db 
+          ports:
+            - containerPort: 5000

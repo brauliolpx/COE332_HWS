@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: braulio1-test-flask-service
+  labels: braulio1
+  env: test
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+  selector:
+    app: braulio1-test-flask
+    username: braulio1
+  ports:
+  - name: braulio1-test-flask
+    port: 5000
+    targetPort: 5000 
